@@ -1,11 +1,17 @@
 const express = require('express');
 
+const trackController = require('../controllers/trackController');
 const router = express.Router();
 
-router.route('/').get((req, res, next) => {
-  res.status(200).json({
-    tracks: 'tracks list',
-  });
-});
+router
+  .route('/')
+  .get(trackController.getAllTracks)
+  .post(trackController.addTrack);
+
+router
+  .route('/:id')
+  .get(trackController.getTrack)
+  .patch(trackController.updateTrack)
+  .delete(trackController.deleteTrack);
 
 module.exports = router;

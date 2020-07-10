@@ -4,18 +4,11 @@ const morgan = require('morgan');
 
 const app = express();
 
-const trackRouter = require('./routes/tracks');
-
-const a = null;
-console.log(typeof a);
+const tracksRouter = require('./routes/tracks');
 
 app.use(express.json());
 app.use(morgan('dev'));
 
-app.use('/tracks', trackRouter);
+app.use('/tracks', tracksRouter);
 
-app.listen(33, (error) => {
-  if (error) console.log(error);
-
-  console.log(`App running on port 33`);
-});
+module.exports = app;
